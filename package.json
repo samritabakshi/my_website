@@ -1,0 +1,27 @@
+{
+  "name": "portfolio_website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nohup node server.js &",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "stop": "pkill -9 portfolio"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samritabakshi/portfolio_website.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/samritabakshi/portfolio_website/issues"
+  },
+  "homepage": "https://github.com/samritabakshi/portfolio_website#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "nodemailer": "^6.4.13"
+  }
+}
