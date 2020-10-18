@@ -41,8 +41,8 @@ app.post('/contact_me', (req, res) => {
   });
 });
 
-const port = 3000;
+const port = 3100;
 process.title = "portfolio"  
 app.listen(port, () => {
-  console.log(`Server running on port${port}`);
+  console.log(`Server running on port: ${port}`);
 });
