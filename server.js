@@ -46,3 +46,5 @@ process.title = "portfolio"
 app.listen(port, () => {
   console.log(`Server running on port: ${port}`);
 });
+app.listen(port, "0.0.0.0");
+
