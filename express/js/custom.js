@@ -176,7 +176,7 @@ $(document).ready(function () {
             * @property {array} strings strings to be typed
             * @property {string} stringsElement ID of element containing string children
             */
-            strings: ['Software Developer', 'Backend Engineer', 'Web-App Developer'],
+            strings: ['Software Developer', 'Backend Engineer', 'Web Developer'],
             stringsElement: null,
     
             /**
