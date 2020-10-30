@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const nodemailer = require("nodemailer");
+const Verifier = require("email-verifier");
 const app = express();
 
 
@@ -27,18 +28,36 @@ app.post('/contact_me', (req, res) => {
     subject: `Website | Contact Me - ${req.body.email}`,
     text: req.body.message
   };
-  
-  transporter.sendMail(mailOptions, function(error, info){
-    if (error) {
-        console.log(error);
+
+  let verifier = new Verifier(process.env.API_KEY);
+    verifier.verify(req.body.email, (err, data) => {
+      console.log(err)
+      console.log(data)
+      console.log(data['smtpCheck'] == "true")
+      if (err){
+        console.log(err);
         res.status(400)
-        res.send({message: error})
-    } else {
-      res.status(200)
-      res.send({message: "done"})
-      console.log('Email sent: ' + info.response);
-    }
+        res.send({message: err})
+      }else{
+        if(data['smtpCheck'] == "true"){
+          transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+                console.log(error);
+                res.status(400)
+                res.send({message: error})
+            } else {
+              res.status(200)
+              res.send({message: "done"})
+              console.log('Email sent: ' + info.response);
+            }
+          });
+        }else{
+          res.status(400)
+          res.send({message: "Email id not valid"})
+        }
+      }
   });
+
 });
 
 const port = 3100;
